@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -15,6 +16,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] Camera cam;
 
+    Dictionary<string, GameObject> wrapClone = new Dictionary<string, GameObject>();
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -22,15 +25,20 @@ public class Player : MonoBehaviour
         turnAction = input.FindAction("Turn");
     }
 
+    private void Start()
+    {
+        wrapClone.Add("Up", transform.Find("WrapUp").gameObject);
+        wrapClone.Add("Down", transform.Find("WrapDown").gameObject);
+        wrapClone.Add("Left", transform.Find("WrapLeft").gameObject);
+        wrapClone.Add("Right", transform.Find("WrapRight").gameObject);
+    }
+
     private void FixedUpdate()
     {
         if (accelAction.IsPressed())
         {
-            float accel = accelAction.ReadValue<float>();
-            if (accel < 0.0f)
-            {
-                accel *= 2;
-            }
+            float accel = accelAction.ReadValue<float>() * maxSpeed/minSpeed;
+            
             speed += accel * Time.fixedDeltaTime;
             if (speed > maxSpeed)
             {
@@ -44,8 +52,31 @@ public class Player : MonoBehaviour
         }
 
         transform.position += transform.up * speed * Time.fixedDeltaTime;
-        cam.transform.position = Vector3.back * Mathf.Max(9 + speed * 2, 10);
+
+        cam.transform.position = Vector3.back * Mathf.Max(9 + speed, 10);
         cam.orthographicSize = -cam.transform.position.z / 2;
+
+        if (transform.position.x > cam.orthographicSize * cam.aspect)
+        {
+            transform.position = wrapClone["Left"].transform.position;
+        }
+        else if (transform.position.x < -cam.orthographicSize * cam.aspect)
+        {
+            transform.position = wrapClone["Right"].transform.position;
+        }
+        if (transform.position.y > cam.orthographicSize)
+        {
+            transform.position = wrapClone["Down"].transform.position;
+        }
+        else if (transform.position.y < -cam.orthographicSize)
+        {
+            transform.position = wrapClone["Up"].transform.position;
+        }
+
+            wrapClone["Up"].transform.position = transform.position + Vector3.up * cam.orthographicSize * 2;
+        wrapClone["Down"].transform.position = transform.position + Vector3.down * cam.orthographicSize * 2;
+        wrapClone["Left"].transform.position = transform.position + Vector3.left * cam.orthographicSize * cam.aspect * 2;
+        wrapClone["Right"].transform.position = transform.position + Vector3.right * cam.orthographicSize * cam.aspect * 2;
 
         if (speed > 0.0f && speed < minSpeed)
         {
@@ -79,6 +110,7 @@ public class Player : MonoBehaviour
         maxSpeed += 1;
         minSpeed += 0.5f;
 
-        Spawner.instance.Spawn(Random.Range(-(cam.orthographicSize * cam.aspect), cam.orthographicSize * cam.aspect), Random.Range(-cam.orthographicSize, cam.orthographicSize));
+        float dist = 4f + maxSpeed/2;
+        Spawner.instance.Spawn(Random.Range(-dist, dist) * cam.aspect, Random.Range(-dist, dist));
     }
 }
