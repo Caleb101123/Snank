@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 0.0f;
     [SerializeField] float turnRate = 180f;
     [SerializeField] float maxSpeed = 4.0f;
-    [SerializeField] float minSpeed = 0.5f;
+    [SerializeField] float minSpeed = 1.0f;
 
     [SerializeField] InputActionAsset input;
     InputAction accelAction;
@@ -35,27 +35,6 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (accelAction.IsPressed())
-        {
-            float accel = accelAction.ReadValue<float>() * maxSpeed/minSpeed;
-            
-            speed += accel * Time.fixedDeltaTime;
-            if (speed > maxSpeed)
-            {
-                speed = maxSpeed;
-            }
-        }
-
-        if (turnAction.IsPressed())
-        {
-            transform.rotation = Quaternion.Euler(0f, 0f, turnAction.ReadValue<float>() * turnRate * Time.fixedDeltaTime) * transform.rotation;
-        }
-
-        transform.position += transform.up * speed * Time.fixedDeltaTime;
-
-        cam.transform.position = Vector3.back * Mathf.Max(9 + speed, 10);
-        cam.orthographicSize = -cam.transform.position.z / 2;
-
         if (transform.position.x > cam.orthographicSize * cam.aspect)
         {
             transform.position = wrapClone["Left"].transform.position;
@@ -73,7 +52,25 @@ public class Player : MonoBehaviour
             transform.position = wrapClone["Up"].transform.position;
         }
 
-            wrapClone["Up"].transform.position = transform.position + Vector3.up * cam.orthographicSize * 2;
+        if (accelAction.IsPressed())
+        {
+            float accel = accelAction.ReadValue<float>() * (maxSpeed-minSpeed);
+            
+            speed += accel * Time.fixedDeltaTime;
+            if (speed > maxSpeed)
+            {
+                speed = maxSpeed;
+            }
+        }
+
+        if (turnAction.IsPressed())
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, turnAction.ReadValue<float>() * turnRate * Time.fixedDeltaTime) * transform.rotation;
+        }
+
+        transform.position += transform.up * speed * Time.fixedDeltaTime;
+
+        wrapClone["Up"].transform.position = transform.position + Vector3.up * cam.orthographicSize * 2;
         wrapClone["Down"].transform.position = transform.position + Vector3.down * cam.orthographicSize * 2;
         wrapClone["Left"].transform.position = transform.position + Vector3.left * cam.orthographicSize * cam.aspect * 2;
         wrapClone["Right"].transform.position = transform.position + Vector3.right * cam.orthographicSize * cam.aspect * 2;
@@ -108,9 +105,12 @@ public class Player : MonoBehaviour
     {
         Destroy(collision.gameObject);
         maxSpeed += 1;
-        minSpeed += 0.5f;
+        minSpeed += 1;
 
-        float dist = 4f + maxSpeed/2;
-        Spawner.instance.Spawn(Random.Range(-dist, dist) * cam.aspect, Random.Range(-dist, dist));
+        cam.GetComponent<ZoomOut>().zoom += 1;
+
+        float dist = cam.orthographicSize;
+        Spawner.instance.Spawn(Random.Range(-dist, dist) * cam.aspect, Random.Range(-dist, dist), 0.5f + cam.orthographicSize/10);
     }
+
 }
