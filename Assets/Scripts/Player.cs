@@ -5,10 +5,8 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float speed = 0.0f;
+    [SerializeField] float speed = 4.0f;
     [SerializeField] float turnRate = 180f;
-    [SerializeField] float maxSpeed = 4.0f;
-    [SerializeField] float minSpeed = 1.0f;
 
     [SerializeField] InputActionAsset input;
     InputAction accelAction;
@@ -52,7 +50,7 @@ public class Player : MonoBehaviour
             transform.position = wrapClone["Up"].transform.position;
         }
 
-        if (accelAction.IsPressed())
+        /*if (accelAction.IsPressed())
         {
             float accel = accelAction.ReadValue<float>() * (maxSpeed-minSpeed);
             
@@ -61,7 +59,7 @@ public class Player : MonoBehaviour
             {
                 speed = maxSpeed;
             }
-        }
+        }*/
 
         if (turnAction.IsPressed())
         {
@@ -74,11 +72,6 @@ public class Player : MonoBehaviour
         wrapClone["Down"].transform.position = transform.position + Vector3.down * cam.orthographicSize * 2;
         wrapClone["Left"].transform.position = transform.position + Vector3.left * cam.orthographicSize * cam.aspect * 2;
         wrapClone["Right"].transform.position = transform.position + Vector3.right * cam.orthographicSize * cam.aspect * 2;
-
-        if (speed > 0.0f && speed < minSpeed)
-        {
-            speed = minSpeed;
-        }
     }
 
     // Update is called once per frame
@@ -103,14 +96,14 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        transform.localScale += new Vector3(0.04f, 0.04f);
         Destroy(collision.gameObject);
-        maxSpeed += 1;
-        minSpeed += 1;
+        speed += 2;
 
         cam.GetComponent<ZoomOut>().zoom += 1;
 
         float dist = cam.orthographicSize;
-        Spawner.instance.Spawn(Random.Range(-dist, dist) * cam.aspect, Random.Range(-dist, dist), 0.5f + cam.orthographicSize/10);
+        Spawner.instance.Spawn(Random.Range(-dist, dist) * cam.aspect, Random.Range(-dist, dist), 0.5f + cam.orthographicSize/12);
     }
 
 }

@@ -253,10 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ec0f5eda3b4874281d989c277d0859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 4
   turnRate: 180
-  maxSpeed: 4
-  minSpeed: 1
   input: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   cam: {fileID: 519420031}
 --- !u!212 &485844605
