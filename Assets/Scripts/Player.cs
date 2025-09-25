@@ -104,6 +104,7 @@ public class Player : MonoBehaviour
 
         float dist = cam.orthographicSize;
         Spawner.instance.Spawn(Random.Range(-dist, dist) * cam.aspect, Random.Range(-dist, dist), 0.5f + cam.orthographicSize/12);
+        Manager.instance.Score();
     }
 
 }
