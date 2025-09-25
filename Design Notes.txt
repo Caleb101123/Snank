@@ -1,0 +1,20 @@
+Temporary Name 'Snank'
+Design Notes
+
+Basic gameplay is derived from classic game Snake. Player character is controlled with A & D keys for steering.
+As time goes on, the player goes from green (healthy) to red (defeated). To recover, they must run into 
+collectables which reset the timer. Should the player turn fully red, the game is lost and they are shown their
+final score. The goal is to gain as high a score as possible before this occurs.
+
+Going Forward
+-Test minor variation to timer system
+-Save high scores
+-Add random perks, selected at intervals to modify the gameplay
+-Replace visual assets
+-Add sound
+-Miscellaneous UX (Menus, Pausing, Options, etc)
+
+Stretch Ideas
+-Alternate gameplay modes (Increased turn rate and slower ramping of speed, but oob is loss instead of wrap?)
+-Customize icons
+-Proper scoreboard with 'enter your name'
