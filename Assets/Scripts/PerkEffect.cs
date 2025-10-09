@@ -1,13 +1,11 @@
 using UnityEngine;
 
+//Minor code reworking from prof - Hisham Ata
+
+
 [System.Serializable]
-public class PerkEffect
+public abstract class PerkEffect
 {
-    public PerkEffect()
-    {
-
-    }
-
     public virtual void Execute(Player player)
     {
         Debug.Log("Null Effect Called");
@@ -19,11 +17,6 @@ public class SteeringPerkEffect : PerkEffect
 {
     public int change;
 
-    public SteeringPerkEffect(int val) : base()
-    {
-        change = val;
-    }
-
     public override void Execute(Player player)
     {
         player.turnRate += change;
@@ -34,11 +27,6 @@ public class SteeringPerkEffect : PerkEffect
 public class SpeedPerkEffect : PerkEffect
 {
     public int change;
-
-    public SpeedPerkEffect(int val) : base()
-    {
-        change = val;
-    }
 
     public override void Execute(Player player)
     {
@@ -53,10 +41,17 @@ public class PointMultiplierEffect : PerkEffect
 {
     public int multiplier;
 
-    public PointMultiplierEffect(int val) : base()
+    public override void Execute(Player player)
     {
-        multiplier = val;
+        Manager.instance.multiplier += multiplier;
     }
+}
+
+[System.Serializable]
+public class TimeMultiplierEffect : PerkEffect
+{
+    public int multiplier;
+    public float duration;
 
     public override void Execute(Player player)
     {
