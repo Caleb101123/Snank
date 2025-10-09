@@ -13,5 +13,18 @@ MonoBehaviour:
   m_Name: DecreaseTurnRate
   m_EditorClassIdentifier: 
   img: {fileID: 5200985212009406779, guid: f4ebb23b1463aa244b87ad09800c7cf4, type: 3}
-  effects: []
+  effects:
+  - rid: 4693375556101603395
+  - rid: 4693375556101603396
   repeatable: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4693375556101603395
+      type: {class: SteeringPerkEffect, ns: , asm: Assembly-CSharp}
+      data:
+        change: -15
+    - rid: 4693375556101603396
+      type: {class: PointMultiplierEffect, ns: , asm: Assembly-CSharp}
+      data:
+        multiplier: 1

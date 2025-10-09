@@ -6,7 +6,8 @@ public class Manager : MonoBehaviour
 {
     public static Manager instance;
     int score = 0;
-    public int multiplier = 1;
+    public int scoreMult = 1;
+    public float timeMult = 1;
     float timer = 10.0f;
     [SerializeField] TMP_Text gameOver;
     [SerializeField] SpriteRenderer[] playerSprite;
@@ -59,7 +60,7 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
+        timer -= Time.deltaTime * timeMult;
         foreach (SpriteRenderer r in playerSprite)
         {
             r.color = new Color((10.0f - timer) / 10.0f, timer / 10.0f, 0);
@@ -74,7 +75,7 @@ public class Manager : MonoBehaviour
 
     public void Score()
     {
-        score += multiplier;
+        score += scoreMult;
         timer = 10.0f;
     }
 

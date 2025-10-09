@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75becec415f2a57468f5a719fef64968, type: 3}
-  m_Name: IncreaseTurnRate
+  m_Name: IncreaseSpeed
   m_EditorClassIdentifier: 
-  img: {fileID: -3319464667984316830, guid: 44ad6c213cd32c6478653ae6471df9e9, type: 3}
+  img: {fileID: -3561827076949756824, guid: 675e1dd7f357f9b43bda76bd80192624, type: 3}
   effects:
-  - rid: 4693375556101603397
+  - rid: 4693375556101603399
   repeatable: 0
   references:
     version: 2
     RefIds:
-    - rid: 4693375556101603397
-      type: {class: SteeringPerkEffect, ns: , asm: Assembly-CSharp}
+    - rid: 4693375556101603399
+      type: {class: SpeedPerkEffect, ns: , asm: Assembly-CSharp}
       data:
-        change: 15
+        change: 10

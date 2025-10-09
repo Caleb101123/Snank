@@ -7,7 +7,7 @@ public class LevelUp : MonoBehaviour
     public static LevelUp instance;
 
     [SerializeField] GameObject[] choice;
-    List<Perk> perks = new List<Perk>();
+    Dictionary<string, Perk> perks = new Dictionary<string, Perk>();
     Perk[] perkChoice;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,7 +24,7 @@ public class LevelUp : MonoBehaviour
 
         foreach (Perk p in Resources.LoadAll("Perks"))
         {
-            perks.Add(p);
+            perks.Add(p.name, p);
         }
         perkChoice = new Perk[3];
 
@@ -34,9 +34,24 @@ public class LevelUp : MonoBehaviour
     public void Activate()
     {
         //Select Perks
-        perkChoice[0] = perks[0];
-        perkChoice[1] = perks[1];
-        perkChoice[2] = perks[2];
+        switch (Random.Range(0, 3))
+        {
+            case 0:
+                perkChoice[0] = perks["IncreaseTurnRate"];
+                perkChoice[1] = perks["DecreaseTurnRate"];
+                break;
+
+            case 1:
+                perkChoice[0] = perks["IncreaseSpeed"];
+                perkChoice[1] = perks["DecreaseSpeed"];
+                break;
+
+            case 2:
+                perkChoice[0] = perks["IncreaseTimer"];
+                perkChoice[1] = perks["DecreaseTimer"];
+                break;
+        }
+        perkChoice[2] = perks["Pass"];
 
         for (int i = 0; i < choice.Length; i++)
         {

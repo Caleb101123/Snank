@@ -539,7 +539,15 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
-  m_NeverAutoSwitchControlSchemes: 0
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8a3c2abe-be52-42bb-bb8a-eb5be8513a02
+    m_ActionName: 'Menu/Pause[/Keyboard/space,/Keyboard/p]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2e35804b-6b47-4040-b9b7-720562596db2
+    m_ActionName: 'Menu/Quit[/Keyboard/escape]'
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -1549,6 +1557,7 @@ GameObject:
   - component: {fileID: 1257772220}
   - component: {fileID: 1257772221}
   - component: {fileID: 1257772222}
+  - component: {fileID: 1257772223}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -1596,7 +1605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1bfb801c969e74797582ec6cda848e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 1
+  scoreMult: 1
+  timeMult: 1
   gameOver: {fileID: 2023081431}
   playerSprite:
   - {fileID: 485844605}
@@ -1635,6 +1645,19 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   player: {fileID: 485844604}
+--- !u!114 &1257772223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257772219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e845569036ea2a42aa32b573a4fb851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &1420853244
 GameObject:
   m_ObjectHideFlags: 0

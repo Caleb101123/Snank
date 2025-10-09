@@ -43,18 +43,17 @@ public class PointMultiplierEffect : PerkEffect
 
     public override void Execute(Player player)
     {
-        Manager.instance.multiplier += multiplier;
+        Manager.instance.scoreMult += multiplier;
     }
 }
 
 [System.Serializable]
 public class TimeMultiplierEffect : PerkEffect
 {
-    public int multiplier;
-    public float duration;
+    public float multiplier;
 
     public override void Execute(Player player)
     {
-        Manager.instance.multiplier += multiplier;
+        Manager.instance.timeMult *= multiplier;
     }
 }
