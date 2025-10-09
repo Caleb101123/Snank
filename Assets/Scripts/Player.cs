@@ -1,25 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float speed = 4.0f;
-    [SerializeField] float turnRate = 180f;
+    public float speed = 4.0f;
+    public float speedIncrease = 2.0f;
+    public float turnRate = 180f;
 
     [SerializeField] InputActionAsset input;
-    InputAction accelAction;
     InputAction turnAction;
 
     [SerializeField] Camera cam;
 
     Dictionary<string, GameObject> wrapClone = new Dictionary<string, GameObject>();
 
+    [SerializeField] int level = 0;
+    [SerializeField] int exp = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        accelAction = input.FindAction("Accel");
         turnAction = input.FindAction("Turn");
     }
 
@@ -49,17 +52,6 @@ public class Player : MonoBehaviour
         {
             transform.position = wrapClone["Up"].transform.position;
         }
-
-        /*if (accelAction.IsPressed())
-        {
-            float accel = accelAction.ReadValue<float>() * (maxSpeed-minSpeed);
-            
-            speed += accel * Time.fixedDeltaTime;
-            if (speed > maxSpeed)
-            {
-                speed = maxSpeed;
-            }
-        }*/
 
         if (turnAction.IsPressed())
         {
@@ -98,13 +90,23 @@ public class Player : MonoBehaviour
     {
         transform.localScale += new Vector3(0.04f, 0.04f);
         Destroy(collision.gameObject);
-        speed += 2;
+        speed += speedIncrease;
 
         cam.GetComponent<ZoomOut>().zoom += 1;
 
         float dist = cam.orthographicSize;
         Spawner.instance.Spawn(Random.Range(-dist, dist) * cam.aspect, Random.Range(-dist, dist), 0.5f + cam.orthographicSize/12);
         Manager.instance.Score();
+
+        exp++;
+        if (exp == 10)
+        {
+            level++;
+            exp = 0;
+            Time.timeScale = 0.0f;
+            LevelUp.instance.gameObject.SetActive(true);
+            LevelUp.instance.Activate();
+        }
     }
 
 }

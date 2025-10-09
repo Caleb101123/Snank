@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Label text="Custom Perk Inspector" style="color: rgb(255, 255, 255);" />
+    <uie:PropertyField label="Image" binding-path="img" style="color: rgb(255, 255, 255); height: 38px;" />
+    <uie:PropertyField binding-path="effects" label="Effects" />
+</ui:UXML>
