@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
         Manager.instance.Score();
 
         exp++;
-        if (exp == 2)
+        if (exp == 10)
         {
             level++;
             exp = 0;

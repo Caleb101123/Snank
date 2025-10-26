@@ -1,5 +1,8 @@
+using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class LevelUp : MonoBehaviour
@@ -33,7 +36,14 @@ public class LevelUp : MonoBehaviour
 
     public void Activate()
     {
+        int[] selections = SelectThreeInts(perks.Count);
+
         //Select Perks
+        perkChoice[0] = perks.Values.ElementAt(selections[0]);
+        perkChoice[1] = perks.Values.ElementAt(selections[1]);
+        perkChoice[2] = perks.Values.ElementAt(selections[2]);
+        //Debug
+        /*
         switch (Random.Range(0, 3))
         {
             case 0:
@@ -52,7 +62,7 @@ public class LevelUp : MonoBehaviour
                 break;
         }
         perkChoice[2] = perks["Pass"];
-
+        */
         for (int i = 0; i < choice.Length; i++)
         {
             choice[i].GetComponent<Image>().sprite = perkChoice[i].Img;
@@ -66,5 +76,24 @@ public class LevelUp : MonoBehaviour
     {
         Time.timeScale = 1;
         gameObject.SetActive(false);
+    }
+
+    private int[] SelectThreeInts(int size)
+    {
+        Assert.IsTrue(size > 2);
+        int[] val = new int[3];
+
+        val[0] = Random.Range(0, size);
+        do
+        {
+            val[1] = Random.Range(0, size);
+        } while (val[1] == val[0]);
+
+        do
+        {
+            val[2] = Random.Range(0, size);
+        } while (val[2] == val[0] ||  val[2] == val[1]);
+
+        return val;
     }
 }
