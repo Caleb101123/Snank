@@ -20,9 +20,13 @@ public class Player : MonoBehaviour
     [SerializeField] int level = 0;
     [SerializeField] int exp = 0;
 
+    public List<Perk> perks, removedPerks;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        perks = new List<Perk>();
+        removedPerks = new List<Perk>();
         turnAction = input.FindAction("Turn");
     }
 
@@ -99,7 +103,7 @@ public class Player : MonoBehaviour
         Manager.instance.Score();
 
         exp++;
-        if (exp == 10)
+        if (exp == 2)
         {
             level++;
             exp = 0;

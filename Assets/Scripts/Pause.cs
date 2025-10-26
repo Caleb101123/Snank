@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Pause : MonoBehaviour
     {
         input.FindAction("Pause").started += OnPause;
         input.FindAction("Quit").started += OnQuit;
+        input.FindAction("Restart").started += OnReload;
     }
 
     public void OnPause(InputAction.CallbackContext ctx)
@@ -26,5 +28,10 @@ public class Pause : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void OnReload(InputAction.CallbackContext ctx)
+    {
+        SceneManager.LoadScene("GameScene");
     }
 }

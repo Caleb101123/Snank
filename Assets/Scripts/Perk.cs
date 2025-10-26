@@ -11,7 +11,7 @@ public class Perk : ScriptableObject
     [SerializeReference] private PerkEffect[] effects;
     public PerkEffect[] Effects { get { return effects; } private set { effects = value; } }
 
-    [SerializeField] private bool repeatable;
+    [SerializeField] public bool repeatable;
 
     public void Gain()
     {
@@ -22,5 +22,18 @@ public class Perk : ScriptableObject
                 effect.Execute(Manager.instance.player);
             }
         }
+        Manager.instance.player.perks.Add(this);
+    }
+
+    public void Remove()
+    {
+        if (effects.Length > 0)
+        {
+            foreach (PerkEffect effect in Effects)
+            {
+                effect.Undo(Manager.instance.player);
+            }
+        }
+        Manager.instance.player.perks.Remove(this);
     }
 }

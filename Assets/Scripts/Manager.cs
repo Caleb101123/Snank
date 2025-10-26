@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -5,11 +6,11 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     public static Manager instance;
-    int score = 0;
+    public int score = 0;
     public int scoreMult = 1;
     public float timeMult = 1;
     float timer = 10.0f;
-    [SerializeField] TMP_Text gameOver;
+    [SerializeField] GameOver gameOver;
     [SerializeField] SpriteRenderer[] playerSprite;
     TrailRenderer trail;
     [SerializeField] Gradient gradient = new Gradient();
@@ -29,7 +30,6 @@ public class Manager : MonoBehaviour
             Destroy(this);
         }
 
-        gameOver.text = "";
         trail = playerSprite[0].gameObject.GetComponent<TrailRenderer>();
         gradient.colorSpace = ColorSpace.Linear;
         gradient.colorKeys = new GradientColorKey[8];
@@ -66,10 +66,10 @@ public class Manager : MonoBehaviour
             r.color = new Color((10.0f - timer) / 10.0f, timer / 10.0f, 0);
         }
 
-        if (timer <= 0)
+        if (timer <= 0 && !gameOver.gameObject.activeInHierarchy)
         {
-            gameOver.text = "Game Over\nFinal Score: " + score;
-            Time.timeScale = 0.0f;
+            gameOver.gameObject.SetActive(true);
+            gameOver.Execute();
         }
     }
 

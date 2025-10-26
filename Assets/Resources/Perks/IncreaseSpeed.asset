@@ -15,6 +15,7 @@ MonoBehaviour:
   img: {fileID: -3561827076949756824, guid: 675e1dd7f357f9b43bda76bd80192624, type: 3}
   effects:
   - rid: 4693375556101603399
+  - rid: 4693375873275920451
   repeatable: 0
   references:
     version: 2
@@ -23,3 +24,7 @@ MonoBehaviour:
       type: {class: SpeedPerkEffect, ns: , asm: Assembly-CSharp}
       data:
         change: 10
+    - rid: 4693375873275920451
+      type: {class: PointMultiplierEffect, ns: , asm: Assembly-CSharp}
+      data:
+        multiplier: 1
