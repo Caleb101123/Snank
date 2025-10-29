@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
 
     Dictionary<string, GameObject> wrapClone = new Dictionary<string, GameObject>();
 
-    [SerializeField] int level = 0;
-    [SerializeField] int exp = 0;
+    int level = 0;
+    int exp = 0;
 
     public List<Perk> perks, removedPerks;
 

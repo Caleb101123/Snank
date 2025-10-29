@@ -1,6 +1,3 @@
-using NUnit.Framework;
-using System.Threading;
-using TMPro;
 using UnityEngine;
 
 public class Manager : MonoBehaviour

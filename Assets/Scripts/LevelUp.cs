@@ -1,8 +1,6 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class LevelUp : MonoBehaviour
@@ -80,7 +78,6 @@ public class LevelUp : MonoBehaviour
 
     private int[] SelectThreeInts(int size)
     {
-        Assert.IsTrue(size > 2);
         int[] val = new int[3];
 
         val[0] = Random.Range(0, size);
