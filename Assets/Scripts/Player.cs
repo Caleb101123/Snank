@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float speed = 4.0f;
     public float speedIncrease = 2.0f;
     public float turnRate = 180f;
+    public EdgeBehaviour edgeBehaviour = EdgeBehaviour.Wrap;
 
     [SerializeField] InputActionAsset input;
     InputAction turnAction;
@@ -40,21 +41,49 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        string edgeDir = "";
         if (transform.position.x > cam.orthographicSize * cam.aspect)
         {
-            transform.position = wrapClone["Left"].transform.position;
+            edgeDir = "Left";
         }
         else if (transform.position.x < -cam.orthographicSize * cam.aspect)
         {
-            transform.position = wrapClone["Right"].transform.position;
+            edgeDir = "Right";
         }
         if (transform.position.y > cam.orthographicSize)
         {
-            transform.position = wrapClone["Down"].transform.position;
+            edgeDir = "Down";
         }
         else if (transform.position.y < -cam.orthographicSize)
         {
-            transform.position = wrapClone["Up"].transform.position;
+            edgeDir = "Up";
+        }
+
+        if (edgeDir != "")
+        {
+            switch (edgeBehaviour)
+            {
+                case EdgeBehaviour.Wrap:
+                    transform.position = wrapClone[edgeDir].transform.position;
+                    break;
+
+                case EdgeBehaviour.Bounce:
+                    Vector3 euler = transform.rotation.eulerAngles;
+                    if (edgeDir == "Up" || edgeDir == "Down")
+                    {
+                        euler.z = 180 - euler.z;
+                    }
+                    if (edgeDir == "Left" || edgeDir == "Right")
+                    {
+                        euler.z = -euler.z;
+                    }
+                    transform.rotation = Quaternion.Euler(euler);
+                    break;
+
+                case EdgeBehaviour.Kill:
+                    Manager.instance.GameOver();
+                    break;
+            }
         }
 
         if (turnAction.IsPressed())
@@ -112,5 +141,12 @@ public class Player : MonoBehaviour
             LevelUp.instance.Activate();
         }
     }
+}
 
+public enum EdgeBehaviour
+{
+    Wrap,
+    Bounce,
+    Kill,
+    Continue
 }

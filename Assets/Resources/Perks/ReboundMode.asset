@@ -10,11 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75becec415f2a57468f5a719fef64968, type: 3}
-  m_Name: Pass
+  m_Name: ReboundMode
   m_EditorClassIdentifier: 
-  img: {fileID: 3319766682038710813, guid: 3cb4cd1851492e24a9aa23c7f44602f5, type: 3}
-  effects: []
-  repeatable: 1
+  img: {fileID: 7652604484263368202, guid: 294cbddc3ba4f26409bc198558fe831d, type: 3}
+  effects:
+  - rid: 4693375998345347149
+  repeatable: 0
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4693375998345347149
+      type: {class: EdgeBehaviourPerkEffect, ns: , asm: Assembly-CSharp}
+      data:
+        newBehaviour: 1

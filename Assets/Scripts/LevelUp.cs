@@ -8,7 +8,7 @@ public class LevelUp : MonoBehaviour
     public static LevelUp instance;
 
     [SerializeField] GameObject[] choice;
-    Dictionary<string, Perk> perks = new Dictionary<string, Perk>();
+    List<Perk> perkList = new List<Perk>();
     Perk[] perkChoice;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,7 +25,7 @@ public class LevelUp : MonoBehaviour
 
         foreach (Perk p in Resources.LoadAll("Perks"))
         {
-            perks.Add(p.name, p);
+            perkList.Add(p);
         }
         perkChoice = new Perk[3];
 
@@ -34,6 +34,12 @@ public class LevelUp : MonoBehaviour
 
     public void Activate()
     {
+        Dictionary<string, Perk> perks = new Dictionary<string, Perk>();
+        foreach (Perk p in perkList.Where((p) => p.repeatable || !Manager.instance.player.perks.Contains(p)))
+        {
+            perks.Add(p.name, p);
+        }
+
         int[] selections = SelectThreeInts(perks.Count);
 
         //Select Perks
@@ -78,6 +84,8 @@ public class LevelUp : MonoBehaviour
 
     private int[] SelectThreeInts(int size)
     {
+        if (size < 3)
+            return null;
         int[] val = new int[3];
 
         val[0] = Random.Range(0, size);

@@ -65,9 +65,14 @@ public class Manager : MonoBehaviour
 
         if (timer <= 0 && !gameOver.gameObject.activeInHierarchy)
         {
-            gameOver.gameObject.SetActive(true);
-            gameOver.Execute();
+            GameOver();
         }
+    }
+
+    public void GameOver()
+    {
+        gameOver.gameObject.SetActive(true);
+        gameOver.Execute();
     }
 
     public void Score()

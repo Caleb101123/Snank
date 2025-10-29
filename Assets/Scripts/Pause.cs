@@ -22,6 +22,9 @@ public class Pause : MonoBehaviour
 
     public void OnPause(InputAction.CallbackContext ctx)
     {
+        if (GameOver.go) 
+            return;
+
         paused = !paused;
         pausePanel.SetActive(paused);
         if (paused)

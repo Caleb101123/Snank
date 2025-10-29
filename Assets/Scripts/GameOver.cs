@@ -9,12 +9,15 @@ public class GameOver : MonoBehaviour
     [SerializeField] GameObject perkDisplay;
     [SerializeField] GameObject prefab;
     [SerializeField] Player player;
+
+    public static bool go;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         text = GetComponent<TMP_Text>();
         text.text = "";
         gameObject.SetActive(false);
+        go = false;
     }
 
     // Update is called once per frame
@@ -25,6 +28,7 @@ public class GameOver : MonoBehaviour
 
     public void Execute()
     {
+        go = true;
         text.text = "Game Over\nFinal Score: " + Manager.instance.score;
         DisplayPerks();
         Time.timeScale = 0.0f;

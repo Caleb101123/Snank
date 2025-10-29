@@ -89,13 +89,13 @@ public class ClearPerkEffect : PerkEffect
 {
     public override void Execute(Player player)
     {
-        if (player.perks.Where(perk => perk.repeatable).Count() > 0)
+        if (player.perks.Where(perk => perk.Effects.Length > 0).Count() > 0)
         {
             Perk target;
             do
             {
                 target = player.perks[Random.Range(0, player.perks.Count)];
-            } while (target.repeatable);
+            } while (target.Effects.Length == 0);
             target.Remove();
             player.removedPerks.Add(target);
         }
@@ -109,5 +109,32 @@ public class ClearPerkEffect : PerkEffect
             target.Gain();
             player.removedPerks.Remove(target);
         }
+    }
+}
+
+[System.Serializable]
+public class EdgeBehaviourPerkEffect : PerkEffect
+{
+    public EdgeBehaviour newBehaviour;
+
+    public override void Execute(Player player)
+    {
+        foreach (Perk p in player.perks)
+        {
+            foreach (PerkEffect e in p.Effects)
+            {
+                if (e.GetType() == typeof(EdgeBehaviourPerkEffect))
+                {
+                    p.Remove();
+                }
+            }
+        }
+
+        player.edgeBehaviour = newBehaviour;
+    }
+
+    public override void Undo(Player player)
+    {
+        player.edgeBehaviour = EdgeBehaviour.Wrap;
     }
 }
