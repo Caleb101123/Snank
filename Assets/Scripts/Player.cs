@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     int level = 0;
     int exp = 0;
 
+    float killTimer = 0.5f;
+
     public List<Perk> perks, removedPerks;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,19 +47,28 @@ public class Player : MonoBehaviour
         if (transform.position.x > cam.orthographicSize * cam.aspect)
         {
             edgeDir = "Left";
+            killTimer -= Time.deltaTime;
         }
         else if (transform.position.x < -cam.orthographicSize * cam.aspect)
         {
             edgeDir = "Right";
+            killTimer -= Time.deltaTime;
         }
-        if (transform.position.y > cam.orthographicSize)
+        else if (transform.position.y > cam.orthographicSize)
         {
             edgeDir = "Down";
+            killTimer -= Time.deltaTime;
         }
         else if (transform.position.y < -cam.orthographicSize)
         {
             edgeDir = "Up";
+            killTimer -= Time.deltaTime;
         }
+        else
+        {
+            killTimer = 0.5f;
+        }
+
 
         if (edgeDir != "")
         {
@@ -84,6 +95,11 @@ public class Player : MonoBehaviour
                     Manager.instance.GameOver();
                     break;
             }
+        }
+        if (killTimer < 0)
+        {
+            transform.position = Vector3.zero;
+            Manager.instance.GameOver();
         }
 
         if (turnAction.IsPressed())
@@ -128,7 +144,7 @@ public class Player : MonoBehaviour
         cam.GetComponent<ZoomOut>().zoom += 1;
 
         float dist = cam.orthographicSize;
-        Spawner.instance.Spawn(Random.Range(-dist, dist) * cam.aspect, Random.Range(-dist, dist), 0.5f + cam.orthographicSize/12);
+        Spawner.instance.Spawn(Random.Range(-dist, dist) * cam.aspect, Random.Range(-dist, dist), (0.5f + cam.orthographicSize/12) * Manager.instance.ballScale);
         Manager.instance.Score();
 
         exp++;

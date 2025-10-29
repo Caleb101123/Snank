@@ -10,21 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75becec415f2a57468f5a719fef64968, type: 3}
-  m_Name: ReboundMode
+  m_Name: GrowCollectables
   m_EditorClassIdentifier: 
-  img: {fileID: 7652604484263368202, guid: 294cbddc3ba4f26409bc198558fe831d, type: 3}
+  img: {fileID: 5021177125984675527, guid: 4ae5ab070dac7db4abc38aefeb336138, type: 3}
   effects:
-  - rid: 4693375998345347149
-  - rid: 4693375998345347156
+  - rid: 4693375998345347150
   repeatable: 0
   references:
     version: 2
     RefIds:
-    - rid: 4693375998345347149
-      type: {class: EdgeBehaviourPerkEffect, ns: , asm: Assembly-CSharp}
+    - rid: 4693375998345347150
+      type: {class: ScaleCollectablePerkEffect, ns: , asm: Assembly-CSharp}
       data:
-        newBehaviour: 1
-    - rid: 4693375998345347156
-      type: {class: PointMultiplierEffect, ns: , asm: Assembly-CSharp}
-      data:
-        multiplier: 2
+        change: 1.2

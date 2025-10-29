@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
 
     public void Spawn(float x, float y, float scale = 1.0f)
     {
-        GameObject obj = GameObject.Instantiate(prefab, new Vector2(x, y), Quaternion.identity);
+        GameObject obj = Instantiate(prefab, new Vector2(x, y), Quaternion.identity);
         obj.transform.localScale *= scale;
     }
 }

@@ -138,3 +138,35 @@ public class EdgeBehaviourPerkEffect : PerkEffect
         player.edgeBehaviour = EdgeBehaviour.Wrap;
     }
 }
+
+[System.Serializable]
+public class ScalePlayerPerkEffect : PerkEffect
+{
+    public float change;
+
+    public override void Execute(Player player)
+    {
+        player.transform.localScale *= change;
+    }
+
+    public override void Undo(Player player)
+    {
+        player.transform.localScale /= change;
+    }
+}
+
+[System.Serializable]
+public class ScaleCollectablePerkEffect : PerkEffect
+{
+    public float change;
+
+    public override void Execute(Player player)
+    {
+        Manager.instance.ballScale *= change;
+    }
+
+    public override void Undo(Player player)
+    {
+        Manager.instance.ballScale /= change;
+    }
+}

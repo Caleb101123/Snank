@@ -14,6 +14,7 @@ public class Manager : MonoBehaviour
     int count = 0;
 
     public Player player;
+    public float ballScale = 1.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
