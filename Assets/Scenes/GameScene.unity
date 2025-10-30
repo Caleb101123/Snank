@@ -645,6 +645,7 @@ MonoBehaviour:
   speed: 4
   speedIncrease: 2
   turnRate: 180
+  edgeBehaviour: 0
   input: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   cam: {fileID: 519420031}
   perks: []
@@ -1759,6 +1760,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   player: {fileID: 485844604}
+  ballScale: 1
 --- !u!114 &1257772223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2299,11 +2301,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1807457394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 0
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1889982579
 GameObject:
   m_ObjectHideFlags: 0

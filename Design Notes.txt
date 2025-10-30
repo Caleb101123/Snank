@@ -1,18 +1,28 @@
 Temporary Name 'Snank'
-Design Notes
+Design Notes - Prototype
 
 Basic gameplay is derived from classic game Snake. Player character is controlled with A & D keys for steering.
 As time goes on, the player goes from green (healthy) to red (defeated). To recover, they must run into 
 collectables which reset the timer. Should the player turn fully red, the game is lost and they are shown their
 final score. The goal is to gain as high a score as possible before this occurs.
 
+New Features:
+-Game can be paused with Space or P. This also displays some player stats; such as score, speed, and timer length.
+-Perks acquired every 10 collectables acquired. 3 perks are chosen at random to pick from using the mouse. Negative
+  perks also increase the amount of points earned per collectable. Functionality for some perks to be repeatable and
+  others to only be acquirable once (disappearing from the pool after collection until removed from player).
+ -Current positive perks: decrease speed, increase turn rate, increase timer length, make player larger, make collectables larger.
+ -Current negative perks: increase speed, decrease turn rate, decrease timer length, make player smaller, make collectables smaller, change screen edge functionality.
+ -A 'skip' perk which does nothing and a perk that sells one random player perk (granting a multiplier increase and removing its effect) also exist in the pool.
+ -Perks acquired listed upon death.
+-Can quit game with Esc or Q.
+-Can restart game with R.
+
 Going Forward
--Test minor variation to timer system
 -Save high scores
--Add random perks, selected at intervals to modify the gameplay
 -Replace visual assets
 -Add sound
--Miscellaneous UX (Menus, Pausing, Options, etc)
+-Miscellaneous UX (Menus, Options, etc)
 
 Stretch Ideas
 -Alternate gameplay modes (Increased turn rate and slower ramping of speed, but oob is loss instead of wrap?)

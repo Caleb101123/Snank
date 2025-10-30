@@ -50,6 +50,8 @@ public class Pause : MonoBehaviour
 
     public void OnReload(InputAction.CallbackContext ctx)
     {
+        GameOver.go = false;
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("GameScene");
     }
 }
