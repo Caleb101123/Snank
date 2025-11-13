@@ -34,8 +34,13 @@ public class Pause : MonoBehaviour
             status.text += "\nMultiplier: " + Manager.instance.scoreMult;
             status.text += "\nPerk Count: " + Manager.instance.player.perks.Count;
             status.text += "\nTimer: " + string.Format("{0:0.00}s", 10 / Manager.instance.timeMult);
+            if (Manager.instance.hyperCooldown > 0)
+            {
+                status.text += "\nHypertime Cooldown: " + string.Format("{0:0.00}s", Manager.instance.hyperCooldown);
+            }
         }
-        Time.timeScale = paused ? 0.0f : 1.0f;
+        float unpauseScale = Manager.instance.hyper ? 1.0f / Manager.instance.hyperMult : 1.0f;
+        Time.timeScale = paused ? 0.0f : unpauseScale;
     }
 
     public void OnQuit(InputAction.CallbackContext ctx)
@@ -50,8 +55,13 @@ public class Pause : MonoBehaviour
 
     public void OnReload(InputAction.CallbackContext ctx)
     {
+        input.FindAction("Pause").started -= OnPause;
+        input.FindAction("Quit").started -= OnQuit;
+        input.FindAction("Restart").started -= OnReload;
+
         GameOver.go = false;
         Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.02f;
         SceneManager.LoadScene("GameScene");
     }
 }

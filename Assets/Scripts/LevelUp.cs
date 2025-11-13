@@ -10,6 +10,7 @@ public class LevelUp : MonoBehaviour
     [SerializeField] GameObject[] choice;
     List<Perk> perkList = new List<Perk>();
     Perk[] perkChoice;
+    [SerializeField] Perk debug;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,6 +48,10 @@ public class LevelUp : MonoBehaviour
         perkChoice[1] = perks.Values.ElementAt(selections[1]);
         perkChoice[2] = perks.Values.ElementAt(selections[2]);
         //Debug
+        if (debug && (debug.repeatable || !Manager.instance.player.perks.Contains(debug)))
+        {
+            perkChoice[2] = debug;
+        }
         /*
         switch (Random.Range(0, 3))
         {

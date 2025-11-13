@@ -147,11 +147,13 @@ public class ScalePlayerPerkEffect : PerkEffect
     public override void Execute(Player player)
     {
         player.transform.localScale *= change;
+        player.sizeMult *= change;
     }
 
     public override void Undo(Player player)
     {
         player.transform.localScale /= change;
+        player.sizeMult /= change;
     }
 }
 
@@ -168,5 +170,21 @@ public class ScaleCollectablePerkEffect : PerkEffect
     public override void Undo(Player player)
     {
         Manager.instance.ballScale /= change;
+    }
+}
+
+[System.Serializable]
+public class FlagPerkEffect : PerkEffect
+{
+    public string flag;
+
+    public override void Execute(Player player)
+    {
+        player.flags.Add(flag);
+    }
+
+    public override void Undo(Player player)
+    {
+        player.flags.Remove(flag);
     }
 }

@@ -10,6 +10,11 @@ public class Player : MonoBehaviour
     public float speedIncrease = 2.0f;
     public float turnRate = 180f;
     public EdgeBehaviour edgeBehaviour = EdgeBehaviour.Wrap;
+    public float sizeMult = 1;
+
+    private float afterimageTimer = 0.2f;
+    private float afterimageTick = 0.0f;
+    [SerializeField] GameObject afterimagePrefab;
 
     [SerializeField] InputActionAsset input;
     InputAction turnAction;
@@ -24,13 +29,16 @@ public class Player : MonoBehaviour
     float killTimer = 0.5f;
 
     public List<Perk> perks, removedPerks;
+    public List<string> flags;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         perks = new List<Perk>();
         removedPerks = new List<Perk>();
+        flags = new List<string>();
         turnAction = input.FindAction("Turn");
+        //input.FindAction("Hyper").started += OnHyper;
     }
 
     private void Start()
@@ -115,9 +123,23 @@ public class Player : MonoBehaviour
         wrapClone["Right"].transform.position = transform.position + Vector3.right * cam.orthographicSize * cam.aspect * 2;
     }
 
+    public void OnHyper()
+    {
+        if (flags.Contains("Hyper_Enable"))
+            Manager.instance.Hypertime();
+    }
+
     // Update is called once per frame
     void Update()
     {
+        afterimageTick += Time.deltaTime;
+        if (afterimageTick >= afterimageTimer)
+        {
+            GameObject afterimage = Instantiate(afterimagePrefab, transform.position, transform.rotation);
+            afterimage.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+            afterimage.transform.localScale = transform.localScale;
+            afterimageTick = 0;
+        }
     }
 
     /*
@@ -137,17 +159,14 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        transform.localScale += new Vector3(0.04f, 0.04f);
+        //transform.localScale += new Vector3(0.04f, 0.04f);
+        transform.localScale += (Vector3.up + Vector3.right) * 0.04f * sizeMult;
         Destroy(collision.gameObject);
         speed += speedIncrease;
 
-        cam.GetComponent<ZoomOut>().zoom += 1;
-
-        float dist = cam.orthographicSize;
-        Spawner.instance.Spawn(Random.Range(-dist, dist) * cam.aspect, Random.Range(-dist, dist), (0.5f + cam.orthographicSize/12) * Manager.instance.ballScale);
         Manager.instance.Score();
-
         exp++;
+
         if (exp == 10)
         {
             level++;
@@ -156,6 +175,11 @@ public class Player : MonoBehaviour
             LevelUp.instance.gameObject.SetActive(true);
             LevelUp.instance.Activate();
         }
+
+        cam.GetComponent<ZoomOut>().zoom += 1;
+
+        float dist = cam.orthographicSize;
+        Spawner.instance.Spawn(Random.Range(-dist, dist) * cam.aspect, Random.Range(-dist, dist), (0.5f + cam.orthographicSize / 12) * Manager.instance.ballScale);
     }
 }
 

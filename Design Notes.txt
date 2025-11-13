@@ -28,3 +28,10 @@ Stretch Ideas
 -Alternate gameplay modes (Increased turn rate and slower ramping of speed, but oob is loss instead of wrap?)
 -Customize icons
 -Proper scoreboard with 'enter your name'
+
+
+
+Theme Ideas
+-Snake?
+-Tank?
+-Tron?
