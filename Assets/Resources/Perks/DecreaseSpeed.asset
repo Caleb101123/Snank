@@ -15,7 +15,7 @@ MonoBehaviour:
   img: {fileID: -2969497955036382426, guid: 8f0a674876053104499addc841962894, type: 3}
   effects:
   - rid: 4693375556101603398
-  repeatable: 1
+  cap: -1
   references:
     version: 2
     RefIds:

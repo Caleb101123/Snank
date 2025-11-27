@@ -30,6 +30,11 @@ public class GameOver : MonoBehaviour
     {
         go = true;
         text.text = "Game Over\nFinal Score: " + Manager.instance.score;
+        if (Manager.instance.score > PlayerPrefs.GetInt("highScore", 0))
+        {
+            text.text += "\nNew High Score!";
+            PlayerPrefs.SetInt("highScore", Manager.instance.score);
+        }
         DisplayPerks();
         Time.timeScale = 0.0f;
     }

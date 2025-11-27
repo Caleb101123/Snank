@@ -12,6 +12,8 @@ public class LevelUp : MonoBehaviour
     Perk[] perkChoice;
     [SerializeField] Perk debug;
 
+    public static bool pause = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,8 +37,9 @@ public class LevelUp : MonoBehaviour
 
     public void Activate()
     {
+        pause = true;
         Dictionary<string, Perk> perks = new Dictionary<string, Perk>();
-        foreach (Perk p in perkList.Where((p) => p.repeatable || !Manager.instance.player.perks.Contains(p)))
+        foreach (Perk p in perkList.Where((p) => !Manager.instance.player.AtCap(p)))
         {
             perks.Add(p.name, p);
         }
@@ -48,7 +51,7 @@ public class LevelUp : MonoBehaviour
         perkChoice[1] = perks.Values.ElementAt(selections[1]);
         perkChoice[2] = perks.Values.ElementAt(selections[2]);
         //Debug
-        if (debug && (debug.repeatable || !Manager.instance.player.perks.Contains(debug)))
+        if (debug && !Manager.instance.player.AtCap(debug))
         {
             perkChoice[2] = debug;
         }
@@ -84,6 +87,7 @@ public class LevelUp : MonoBehaviour
     private void Deactivate()
     {
         Time.timeScale = 1;
+        pause = false;
         gameObject.SetActive(false);
     }
 

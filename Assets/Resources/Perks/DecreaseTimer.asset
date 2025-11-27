@@ -16,7 +16,7 @@ MonoBehaviour:
   effects:
   - rid: 4693375556101603401
   - rid: 4693375556101603402
-  repeatable: 1
+  cap: -1
   references:
     version: 2
     RefIds:

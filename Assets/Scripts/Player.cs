@@ -1,8 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -180,6 +179,11 @@ public class Player : MonoBehaviour
 
         float dist = cam.orthographicSize;
         Spawner.instance.Spawn(Random.Range(-dist, dist) * cam.aspect, Random.Range(-dist, dist), (0.5f + cam.orthographicSize / 12) * Manager.instance.ballScale);
+    }
+
+    public bool AtCap (Perk perk)
+    {
+        return perk.cap > -1 && perks.Where((p) => p == perk).Count() >= perk.cap;
     }
 }
 

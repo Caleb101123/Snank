@@ -25,6 +25,9 @@ public class Pause : MonoBehaviour
         if (GameOver.go) 
             return;
 
+        if (LevelUp.pause)
+            return;
+
         paused = !paused;
         pausePanel.SetActive(paused);
         if (paused)
@@ -55,13 +58,32 @@ public class Pause : MonoBehaviour
 
     public void OnReload(InputAction.CallbackContext ctx)
     {
+        Reload();
+    }
+
+    public void Reload()
+    {
         input.FindAction("Pause").started -= OnPause;
         input.FindAction("Quit").started -= OnQuit;
         input.FindAction("Restart").started -= OnReload;
 
         GameOver.go = false;
+        LevelUp.pause = false;
         Time.timeScale = 1.0f;
         Time.fixedDeltaTime = 0.02f;
         SceneManager.LoadScene("GameScene");
+    }
+
+    public void Return()
+    {
+        input.FindAction("Pause").started -= OnPause;
+        input.FindAction("Quit").started -= OnQuit;
+        input.FindAction("Restart").started -= OnReload;
+
+        GameOver.go = false;
+        LevelUp.pause = false;
+        Time.timeScale = 0.0f;
+        Time.fixedDeltaTime = 0.02f;
+        SceneManager.LoadScene("StartScene");
     }
 }
