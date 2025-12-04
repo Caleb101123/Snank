@@ -28,6 +28,8 @@ public class GameOver : MonoBehaviour
 
     public void Execute()
     {
+        AudioHandler.instance.PauseMusic();
+        AudioHandler.instance.PlaySFX("Game Over");
         go = true;
         text.text = "Game Over\nFinal Score: " + Manager.instance.score;
         if (Manager.instance.score > PlayerPrefs.GetInt("highScore", 0))

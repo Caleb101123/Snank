@@ -30,7 +30,8 @@ public class AudioHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Manager.instance)
+        music.pitch = Manager.instance.hyper ? 0.5f : 1.0f;
     }
 
     public void SetMusic(Scene scene, LoadSceneMode mode)
@@ -114,5 +115,15 @@ public class AudioHandler : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void PauseMusic()
+    {
+        music.Pause();
+    }
+
+    public void PlayMusic()
+    {
+        music.Play();
     }
 }

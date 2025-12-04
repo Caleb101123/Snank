@@ -163,6 +163,7 @@ public class Player : MonoBehaviour
         Destroy(collision.gameObject);
         speed += speedIncrease;
 
+        AudioHandler.instance.PlaySFX("Collect");
         Manager.instance.Score();
         exp++;
 

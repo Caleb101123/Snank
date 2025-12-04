@@ -2832,10 +2832,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colours:
   - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0, b: 1, a: 1}
+  - {r: 0.4528302, g: 0, b: 0.4528302, a: 1}
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 0, g: 0.47798735, b: 0.47798735, a: 1}
-  - {r: 0.49056602, g: 0, b: 0.49056602, a: 1}
   shift: 0
 --- !u!1 &1257772219
 GameObject:

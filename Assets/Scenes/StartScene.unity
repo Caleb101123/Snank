@@ -2419,8 +2419,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuMusic: {fileID: 8300000, guid: 7f80388453a18254b8adec8c79f1e68a, type: 3}
   gameMusic: {fileID: 8300000, guid: 05bfb3dfd8381114d9f89e814f48ac2d, type: 3}
-  collectSFX: {fileID: 0}
-  gameOverSFX: {fileID: 0}
+  collectSFX: {fileID: 8300000, guid: 78b958f2ad274ea47ba64b8243f1a241, type: 3}
+  gameOverSFX: {fileID: 8300000, guid: 8db08af22af7f3948b11b04b8b7cc045, type: 3}
   music: {fileID: 1028848288}
   sfx: {fileID: 1028848287}
 --- !u!82 &1028848287
@@ -3321,7 +3321,11 @@ MonoBehaviour:
     Licensed
     under Creative Commons: By Attribution 4.0
 
-    http://creativecommons.org/licenses/by/4.0/'
+    http://creativecommons.org/licenses/by/4.0/
+
+
+    Sound
+    Effects from Pixabay'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

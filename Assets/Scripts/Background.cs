@@ -18,7 +18,7 @@ public class Background : MonoBehaviour
 
     void Update()
     {
-        shift += Time.deltaTime * 0.05f;
+        shift += Time.deltaTime * 0.1f;
         if (shift > colours.Length) 
             shift -= colours.Length;
 
