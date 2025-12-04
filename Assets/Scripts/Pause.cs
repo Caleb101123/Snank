@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Pause : MonoBehaviour
     bool paused = false;
     [SerializeField] GameObject pausePanel;
     TMP_Text status;
+
+    [SerializeField] Toggle sfxToggle, musicToggle;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +21,9 @@ public class Pause : MonoBehaviour
 
         pausePanel.SetActive(false);
         status = pausePanel.transform.Find("StatsText").GetComponent<TMP_Text>();
+
+        sfxToggle.isOn = !AudioHandler.instance.GetMute("SFX");
+        musicToggle.isOn = !AudioHandler.instance.GetMute("Music");
     }
 
     public void OnPause(InputAction.CallbackContext ctx)
@@ -85,5 +91,15 @@ public class Pause : MonoBehaviour
         Time.timeScale = 0.0f;
         Time.fixedDeltaTime = 0.02f;
         SceneManager.LoadScene("StartScene");
+    }
+
+    public void ToggleMusic(bool toggle)
+    {
+        AudioHandler.instance.ToggleMute("Music", !toggle);
+    }
+
+    public void ToggleSFX(bool toggle)
+    {
+        AudioHandler.instance.ToggleMute("SFX", !toggle);
     }
 }

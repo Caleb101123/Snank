@@ -46,7 +46,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
-
     public void Quit()
     {
 #if UNITY_EDITOR
@@ -55,5 +54,20 @@ public class MainMenu : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void ToggleSimpleBackground(bool toggle)
+    {
+        Background.killOnLoad = toggle;
+    }
+
+    public void ToggleMusic(bool toggle)
+    {
+        AudioHandler.instance.ToggleMute("Music", !toggle);
+    }
+
+    public void ToggleSFX(bool toggle)
+    {
+        AudioHandler.instance.ToggleMute("SFX", !toggle);
     }
 }
