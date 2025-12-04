@@ -1,37 +1,57 @@
 Temporary Name 'Snank'
-Design Notes - Prototype
+Design Notes - Final Slice
 
 Basic gameplay is derived from classic game Snake. Player character is controlled with A & D keys for steering.
 As time goes on, the player goes from green (healthy) to red (defeated). To recover, they must run into 
 collectables which reset the timer. Should the player turn fully red, the game is lost and they are shown their
 final score. The goal is to gain as high a score as possible before this occurs.
 
-New Features:
--Game can be paused with Space or P. This also displays some player stats; such as score, speed, and timer length.
--Perks acquired every 10 collectables acquired. 3 perks are chosen at random to pick from using the mouse. Negative
-  perks also increase the amount of points earned per collectable. Functionality for some perks to be repeatable and
-  others to only be acquirable once (disappearing from the pool after collection until removed from player).
- -Current positive perks: decrease speed, increase turn rate, increase timer length, make player larger, make collectables larger.
- -Current negative perks: increase speed, decrease turn rate, decrease timer length, make player smaller, make collectables smaller, change screen edge functionality.
- -A 'skip' perk which does nothing and a perk that sells one random player perk (granting a multiplier increase and removing its effect) also exist in the pool.
- -Perks acquired listed upon death.
--Can quit game with Esc or Q.
--Can restart game with R.
+Game can be paused with Space or P. This also displays some player stats; such as score, speed, and timer length.
+Perks acquired every 10 collectables acquired. 3 perks are chosen at random to pick from using the mouse. Negative
+perks also increase the amount of points earned per collectable. Functionality for some perks to be repeatable and
+others to only be acquirable a set number of times (disappearing from the pool after collection until removed from 
+player). Acquired perks shown in a list upon death.
 
-Going Forward
--Save high scores
--Replace visual assets
--Add sound
--Miscellaneous UX (Menus, Options, etc)
+
+Can quit game with Esc or Q. Can restart game with R.
+
+New Features:
+-Main Menu with instructions
+-High score saved and displayed on Main Menu
+-Updated sprites and backgrounds
+-Background music and sound effects
+-Customize controls
+-Hyper-time perk allows slowdown more toggled with H or Shift, increasing precision at the cost of energy
 
 Stretch Ideas
 -Alternate gameplay modes (Increased turn rate and slower ramping of speed, but oob is loss instead of wrap?)
 -Customize icons
--Proper scoreboard with 'enter your name'
+-Extend High Score to full scoreboard with 'enter your name'
 
 
 
-Theme Ideas
--Snake?
--Tank?
--Tron?
+Polish
+-Perk Tooltips
+-Pause Menu show perks
+-Perk icons
+
+
+
+
+Post-Mortem
+
+Honestly, I think this game was hard-carried by the simple concept. It turned out to be surprisingly fun, and make it easy to build out.
+Perk system turned out to be a great idea, thanks again to Professor Hisham for the idea. Randomized run progression added replayibility
+without requiring much work to extend once the original framework was in place.
+
+Biggest challenge was aesthetics and polish. My own lack of artistic confidence held the game in a very 'placeholder graphics' state for
+most of production. Best solutions going forward are to either arrange for another party to handle such things (if possible), or come up
+with a simple end look that doesn't require more than basic shapes.
+
+Also, need to remember to keep scheduling in mind. Almost ran in to deadline issues a few times due to losing track, and risking disaster
+due to last-minute coding. Things turned out pretty alright this time, but could have been bad if something went wrong. Similarly, make sure
+to check in with possible playtesters more often to get feedback faster for iteration; lost time waiting for feedback from friends who 
+hadn't gotten around to actually trying builds a couple times.
+
+Overall, awkward project management saved by simple concept and understanding of how to code. And lots of help from others in terms of
+feedback (and coding assistance from Prof - Thanks again!).
