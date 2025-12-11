@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75becec415f2a57468f5a719fef64968, type: 3}
   m_Name: IncreaseTurnRate
   m_EditorClassIdentifier: 
-  img: {fileID: -3319464667984316830, guid: 44ad6c213cd32c6478653ae6471df9e9, type: 3}
+  img: {fileID: -7376869000814524738, guid: 352e8eb244fdffa47a869d7550dbf49a, type: 3}
   effects:
   - rid: 4693375556101603397
+  description: Better turn rate for finer control.
   cap: -1
   references:
     version: 2

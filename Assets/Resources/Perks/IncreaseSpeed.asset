@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75becec415f2a57468f5a719fef64968, type: 3}
   m_Name: IncreaseSpeed
   m_EditorClassIdentifier: 
-  img: {fileID: -3561827076949756824, guid: 675e1dd7f357f9b43bda76bd80192624, type: 3}
+  img: {fileID: -4115439610729684787, guid: faad36caa12b394448e5c7db03ecc8e4, type: 3}
   effects:
   - rid: 4693375556101603399
   - rid: 4693375873275920451
+  description: Feel the need for extra speed? +1 point per collectable.
   cap: -1
   references:
     version: 2

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class LevelUp : MonoBehaviour
     public static LevelUp instance;
 
     [SerializeField] GameObject[] choice;
+    [SerializeField] TMP_Text descBox;
     List<Perk> perkList = new List<Perk>();
     Perk[] perkChoice;
     [SerializeField] Perk debug;
@@ -81,6 +83,18 @@ public class LevelUp : MonoBehaviour
             choice[i].GetComponent<Button>().onClick.RemoveAllListeners();
             choice[i].GetComponent<Button>().onClick.AddListener(perkChoice[i].Gain);
             choice[i].GetComponent<Button>().onClick.AddListener(Deactivate);
+        }
+    }
+
+    public void SetText(int choice)
+    {
+        if (choice == -1)
+        {
+            descBox.text = string.Empty;
+        }
+        else
+        {
+            descBox.text = perkChoice[choice].description;
         }
     }
 

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75becec415f2a57468f5a719fef64968, type: 3}
   m_Name: Hypertime
   m_EditorClassIdentifier: 
-  img: {fileID: -1641487595351100800, guid: 338925204e710714eb74d38021dc61d1, type: 3}
+  img: {fileID: -621946337137805658, guid: 83ad978c6be2dc743916d1987dc27e66, type: 3}
   effects:
   - rid: 3921254596552425539
+  description: 'Activate Hyper to enter slow-motion until you turn it off. Has a
+    cooldown. \nWARNING: Consumes energy rapidly. Use with caution.'
   cap: 1
   references:
     version: 2

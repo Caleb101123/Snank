@@ -11,6 +11,8 @@ public class Perk : ScriptableObject
     [SerializeReference] private PerkEffect[] effects;
     public PerkEffect[] Effects { get { return effects; } private set { effects = value; } }
 
+    public string description = "";
+
     //[SerializeField] public bool repeatable;
     [SerializeField] public int cap = -1;
 

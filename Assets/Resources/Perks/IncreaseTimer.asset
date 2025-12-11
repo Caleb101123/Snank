@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75becec415f2a57468f5a719fef64968, type: 3}
   m_Name: IncreaseTimer
   m_EditorClassIdentifier: 
-  img: {fileID: 430443987289859485, guid: 8cf0b8494abe2474eaad4373bba61c1d, type: 3}
+  img: {fileID: 8429738393686739305, guid: baa9c8f38bb39894892b229040e7806d, type: 3}
   effects:
   - rid: 4693375556101603400
+  description: Your energy lasts longer, giving you more before you run out.
   cap: -1
   references:
     version: 2

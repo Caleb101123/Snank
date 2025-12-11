@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
         if (killTimer < 0)
         {
             transform.position = Vector3.zero;
-            Manager.instance.GameOver();
+            //Manager.instance.timer = 0;
         }
 
         if (turnAction.IsPressed())

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75becec415f2a57468f5a719fef64968, type: 3}
   m_Name: DecreaseTimer
   m_EditorClassIdentifier: 
-  img: {fileID: 8381013415332509031, guid: 97b971f5a3a3c7c43b75bd104529c00d, type: 3}
+  img: {fileID: 8245098745750165904, guid: d8b327d0f27b7af408a8e52f01fbe761, type: 3}
   effects:
   - rid: 4693375556101603401
   - rid: 4693375556101603402
+  description: Amp up the time pressure. +1 point per collectable.
   cap: -1
   references:
     version: 2

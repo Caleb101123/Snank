@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ReboundRough_0: 7652604484263368202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

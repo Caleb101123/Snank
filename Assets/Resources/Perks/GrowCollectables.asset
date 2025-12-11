@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75becec415f2a57468f5a719fef64968, type: 3}
   m_Name: GrowCollectables
   m_EditorClassIdentifier: 
-  img: {fileID: 5021177125984675527, guid: 4ae5ab070dac7db4abc38aefeb336138, type: 3}
+  img: {fileID: 8271158437115353037, guid: 31a7e6f678335304da5764249fc2325f, type: 3}
   effects:
   - rid: 4693375998345347150
+  description: Make your targets bigger and easier to hit.
   cap: 10
   references:
     version: 2

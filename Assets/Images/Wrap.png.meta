@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8c81da255e9c016468126bdb07154201
+guid: b87427414c436ad4ca23d9c091848e51
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2516337203922815097
-    second: WrapRough_0
+      213: 7149554777477556295
+    second: Wrap_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -152,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WrapRough_0
+      name: Wrap_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 200
-        height: 200
+        x: 53
+        y: 53
+        width: 1894
+        height: 1894
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,8 +167,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9784be6da53dbe220800000000000000
-      internalID: 2516337203922815097
+      spriteID: 7482fbda032583360800000000000000
+      internalID: 7149554777477556295
       vertices: []
       indices: 
       edges: []
@@ -187,7 +187,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      WrapRough_0: 2516337203922815097
+      Wrap_0: 7149554777477556295
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

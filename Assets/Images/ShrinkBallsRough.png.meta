@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ShrinkBallsRough_0: 8909249450760568808
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

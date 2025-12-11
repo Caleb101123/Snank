@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 3319766682038710813, guid: 3cb4cd1851492e24a9aa23c7f44602f5, type: 3}
   effects: []
+  description: If you are reading this, my debug perk removal code is not working.
+    Oops.
   cap: 0
   references:
     version: 2

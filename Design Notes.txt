@@ -1,4 +1,4 @@
-Temporary Name 'Snank'
+Snank
 Design Notes - Final Slice
 
 Basic gameplay is derived from classic game Snake. Player character is controlled with A & D keys for steering.
@@ -23,17 +23,16 @@ New Features:
 -Customize controls
 -Hyper-time perk allows slowdown more toggled with H or Shift, increasing precision at the cost of energy
 
-Stretch Ideas
--Alternate gameplay modes (Increased turn rate and slower ramping of speed, but oob is loss instead of wrap?)
--Customize icons
--Extend High Score to full scoreboard with 'enter your name'
-
-
-
 Polish
 -Perk Tooltips
 -Pause Menu show perks
 -Perk icons
+
+Stretch Ideas
+-Alternate gameplay modes (Increased turn rate and slower ramping of speed, but oob is loss instead of wrap?)
+-Extend High Score to full scoreboard with 'enter your name'
+
+
 
 
 
@@ -41,7 +40,7 @@ Polish
 Post-Mortem
 
 Honestly, I think this game was hard-carried by the simple concept. It turned out to be surprisingly fun, and make it easy to build out.
-Perk system turned out to be a great idea, thanks again to Professor Hisham for the idea. Randomized run progression added replayibility
+Perk system turned out to be a great idea, thanks again to Professor Hisham for the idea. Randomized run progression added replayability
 without requiring much work to extend once the original framework was in place.
 
 Biggest challenge was aesthetics and polish. My own lack of artistic confidence held the game in a very 'placeholder graphics' state for

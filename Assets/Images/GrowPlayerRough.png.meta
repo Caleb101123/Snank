@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GrowPlayerRough_0: -6905018120149530017
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

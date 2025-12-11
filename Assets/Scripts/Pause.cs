@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +12,12 @@ public class Pause : MonoBehaviour
     bool paused = false;
     [SerializeField] GameObject pausePanel;
     TMP_Text status;
+
+
+    [SerializeField] GameObject prefab;
+    [SerializeField] GameObject perkDisplay;
+    [SerializeField] Player player;
+    List<GameObject> old = new List<GameObject>();
 
     [SerializeField] Toggle sfxToggle, musicToggle;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,8 +44,11 @@ public class Pause : MonoBehaviour
 
         paused = !paused;
         pausePanel.SetActive(paused);
+
+
         if (paused)
         {
+            DisplayPerks();
             status.text = "Score: " + Manager.instance.score;
             status.text += "\nSpeed: " + Manager.instance.player.speed;
             status.text += "\nMultiplier: " + Manager.instance.scoreMult;
@@ -101,5 +112,40 @@ public class Pause : MonoBehaviour
     public void ToggleSFX(bool toggle)
     {
         AudioHandler.instance.ToggleMute("SFX", !toggle);
+    }
+
+
+    private void DisplayPerks()
+    {
+        int i = 0;
+
+        for (int n = old.Count - 1; n >= 0; n--)
+        {
+            Destroy(old[n]);
+        }
+
+        old = new List<GameObject>();
+
+        foreach (Perk p in player.perks.Distinct())
+        {
+            GameObject perk = Instantiate(prefab, perkDisplay.transform);
+            perk.GetComponent<Image>().sprite = player.perks[i].Img;
+            RectTransform rect = perk.GetComponent<RectTransform>();
+            rect.localPosition = new Vector2((120 * (i % 8)) - 420, 100 - (120 * (i / 8)));
+
+            perk.GetComponentInChildren<TMP_Text>().text = "x" + player.perks.Where(x => x.name == p.name).Count();
+            old.Add(perk);
+            i++;
+        }
+
+        /*
+        for (int i = 0; i < player.perks.Count; i++)
+        {
+            perk.GetComponent<Image>().sprite = player.perks[i].Img;
+            RectTransform rect = perk.GetComponent<RectTransform>();
+            rect.localPosition = new Vector2((120 * (i % 8)) - 420, 100 - (120 * (i / 8)));
+            Debug.Log("Added perk " + i);
+        }
+        Debug.Log("Finished adding perks");*/
     }
 }

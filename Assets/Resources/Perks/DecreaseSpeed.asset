@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75becec415f2a57468f5a719fef64968, type: 3}
   m_Name: DecreaseSpeed
   m_EditorClassIdentifier: 
-  img: {fileID: -2969497955036382426, guid: 8f0a674876053104499addc841962894, type: 3}
+  img: {fileID: 4088661473394792140, guid: e2b1e1e660e63b94ba07871f3b27a5bf, type: 3}
   effects:
   - rid: 4693375556101603398
+  description: Slow down a bit to keep a handle on things.
   cap: -1
   references:
     version: 2
